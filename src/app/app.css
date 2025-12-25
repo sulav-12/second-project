@@ -1,0 +1,35 @@
+/* WRAPPER for sidebar (important!) */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100vh;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+/* EXPAND SIDEBAR ON HOVER */
+.sidebar-container:hover {
+  width: 150px;
+}
+
+/* Inside navbar component */
+.sidebar {
+  height: 100%;
+  background-color: #465d7d;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+/* MAIN CONTENT (responds to wrapper hover) */
+.main-content {
+  margin-left:80px;                      /* default collapsed width */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* SHIFT MAIN CONTENT WHEN SIDEBAR EXPANDS */
+.sidebar-container:hover ~ .main-content {
+  margin-left: 150px;                    /* expanded width */
+}

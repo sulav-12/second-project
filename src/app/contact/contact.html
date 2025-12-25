@@ -1,0 +1,128 @@
+<div class="container-wrapper contact-form-parent" style="width: 100vh; margin: auto">
+  <div class="ph">
+    <img src="/contact.jpg" alt="contact" />
+  </div>
+  <div class="contact-form">
+    <form [formGroup]="myForm" (ngSubmit)="submit()">
+      <div>
+        <h2>Contact Us</h2>
+        <p>Get in touch with our team to learn more about Bandu.com</p>
+
+        <div class="form-group">
+          <label for="FirstName">First Name</label>
+          <input id="FirstName" type="text" formControlName="FirstName" class="form-control" />
+          @if (f['FirstName'].invalid && (f['FirstName'].touched || f['FirstName'].dirty)) {
+            <div
+              class="text-danger"
+              >
+              @if (f['FirstName'].errors?.['required']) {
+                <small>First Name is required.</small>
+              }
+              @if (f['FirstName'].errors?.['maxlength']) {
+                <small
+                  >Maximum 20 characters allowed.</small
+                  >
+                }
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input id="LastName" type="text" formControlName="LastName" class="form-control" />
+            @if (f['LastName'].invalid && (f['LastName'].touched || f['LastName'].dirty)) {
+              <div
+                class="text-danger"
+                >
+                @if (f['LastName'].errors?.['required']) {
+                  <small>Last Name is required.</small>
+                }
+                @if (f['LastName'].errors?.['maxlength']) {
+                  <small
+                    >Maximum 20 characters allowed.</small
+                    >
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <input id="Email" type="email" formControlName="Email" class="form-control" />
+              @if (f['Email'].invalid && (f['Email'].touched || f['Email'].dirty)) {
+                <div
+                  class="text-danger"
+                  >
+                  @if (f['Email'].errors?.['required']) {
+                    <small>Email is required.</small>
+                  }
+                  @if (f['Email'].errors?.['pattern']) {
+                    <small>Invalid email format.</small>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="Phone">Phone</label>
+              <input id="Phone" type="tel" formControlName="Phone" class="form-control" />
+              @if (f['Phone'].invalid && (f['Phone'].touched || f['Phone'].dirty)) {
+                <div
+                  class="text-danger"
+                  >
+                  @if (f['Phone'].errors?.['required']) {
+                    <small>Phone Number is required.</small>
+                  }
+                  @if (f['Phone'].errors?.['pattern']) {
+                    <small
+                      >Must start with 97 or 98 (10 digits).</small
+                      >
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="Country">Country</label>
+                <select id="Country" type="text" formControlName="Country" class="form-control">
+                  <option value="">---Please choose an option---</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="India">India</option>
+                  <option value="US">United States</option>
+                  <option value="AU">Australia</option>
+                </select>
+                @if (f['Country'].invalid && (f['Country'].touched || f['Country'].dirty)) {
+                  <div
+                    class="text-danger"
+                    >
+                    @if (f['Country'].errors?.['required']) {
+                      <small>Country is required.</small>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="Message">Message</label>
+                <textarea id="Message" formControlName="Message" class="form-control" rows="4"></textarea>
+                @if (f['Message'].invalid && (f['Message'].touched || f['Message'].dirty)) {
+                  <div
+                    class="text-danger"
+                    >
+                    @if (f['Message'].errors?.['required']) {
+                      <small>Message is required.</small>
+                    }
+                    @if (f['Message'].errors?.['maxlength']) {
+                      <small>Maximum 50 characters allowed.</small>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-submit">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>

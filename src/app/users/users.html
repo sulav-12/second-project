@@ -1,0 +1,30 @@
+<h2>Users</h2>
+
+<table border="1" width="100%">
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let u of users">
+    <td>{{ u.email }}</td>
+    <td>{{ u.role }}</td>
+    <td>
+      <button (click)="edit(u)">Edit</button>
+      <button (click)="delete(u)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="selectedUser">
+  <h3>Edit User</h3>
+  <label>Email:</label>
+  <input [(ngModel)]="selectedUser.email" />
+  <label>Role:</label>
+  <select [(ngModel)]="selectedUser.role">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button (click)="update()">Update</button>
+  <button (click)="selectedUser = null">Cancel</button>
+</div>

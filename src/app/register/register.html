@@ -1,0 +1,44 @@
+<div class="center-container">
+  <div class="form-box">
+    <h2>Register</h2>
+    <form (ngSubmit)="register()">
+      <label>Email</label>
+      <input
+        type="Email"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="username@gmail.com"
+        required
+        pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
+        #usernameInput="ngModel"
+      />
+      <div class="error" *ngIf="usernameInput.invalid && usernameInput.touched">
+        <span *ngIf="usernameInput.errors?.['required']">Email is required.</span>
+        <span *ngIf="usernameInput.errors?.['pattern']">Must be a valid Gmail address.</span>
+      </div>
+
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Password"
+        required
+        minlength="6"
+        #passwordInput="ngModel"
+      />
+      <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+        <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+        <span *ngIf="passwordInput.errors?.['minlength']"
+          >Password must be at least 6 characters.</span
+        >
+      </div>
+      <button type="submit">Register</button>
+    </form>
+
+    <p>
+      Already have an account?
+      <a (click)="switchToLogin()">Login here</a>
+    </p>
+  </div>
+</div>
